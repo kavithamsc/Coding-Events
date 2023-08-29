@@ -14,25 +14,24 @@ import java.util.List;
 @Controller
 @RequestMapping("events")
 public class EventController {
-
     private static List<Event> events = new ArrayList<>();
-
     @GetMapping
-    public String displayAllEvents(Model model) {
+    public String displayAllEvents(Model model){
         model.addAttribute("title", "All Events");
         model.addAttribute("events", events);
         return "events/index";
     }
-
     @GetMapping("create")
-    public String displayCreateEventForm(Model model) {
+    public String renderCreateEventForm(Model model){
         model.addAttribute("title", "Create Event");
         return "events/create";
     }
 
     @PostMapping("create")
-    public String processCreateEventForm(@RequestParam String eventName) {
-        events.add(new Event(eventName));
+    public String processCreateEventForm(@RequestParam String eventName,
+                                         @RequestParam String eventDescription) {
+        events.add(new Event(eventName, eventDescription));
         return "redirect:";
     }
+
 }
