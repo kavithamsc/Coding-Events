@@ -1,7 +1,13 @@
 body {
-font-size: 18px;
+font-size: 14px;
 color:purple;
 }
+
 .error {
 color:red;
+}
+
+.checkbox {
+    height: 25px;
+    width: 25px;
 }
