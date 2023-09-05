@@ -3,6 +3,8 @@ package org.launchcode.codingevents.models;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +25,8 @@ public class Event extends AbstractEntity{
      @ManyToOne
      @NotNull(message = "Category is required")
     private EventCategory eventCategory;
+     @ManyToMany
+     private List<Tag> tags = new ArrayList<>();
     public Event(String name, EventCategory eventCategory) {
         this.name = name;
         this.eventCategory= eventCategory;
@@ -54,6 +58,12 @@ public class Event extends AbstractEntity{
         this.eventDetails = eventDetails;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+    public void addTag(Tag tag){
+        this.tags.add(tag);
+    }
     @Override
     public String toString() {
         return name;
