@@ -1,6 +1,6 @@
 package org.launchcode.codingevents.models;
 
-import ch.qos.logback.core.boolex.EventEvaluator;
+
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
@@ -8,20 +8,21 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-public class EventDetails extends AbstractEntity{
-    @Size(max = 500, message = "Description too long.")
+public class EventDetails extends AbstractEntity {
+
+    @Size(max = 500, message = "Description too long!")
     private String description;
 
-    @NotBlank(message="Email is required")
+    @NotBlank(message = "Email is required")
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public EventDetails(String description, String contactEmail) {
+    public EventDetails(@Size(max = 500, message = "Description too long!") String description, @NotBlank(message = "Email is required") @Email(message = "Invalid email. Try again.") String contactEmail) {
         this.description = description;
         this.contactEmail = contactEmail;
     }
-    public EventDetails(){
-    }
+
+    public EventDetails() {}
 
     public String getDescription() {
         return description;
